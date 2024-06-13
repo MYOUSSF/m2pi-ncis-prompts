@@ -1,0 +1,101 @@
+Prompt,Category,Relevance,Unnamed: 2,Legend,Unnamed: 4,Category
+Vessel caught misreporting catch amount,2,Broad,,Broad,"Relevant, but will probably yield general results. ",2
+Vessel caught falsifying fishing logs,1,Broad,,Specific,"Relevant, but will generate results for a very specifc case",1
+Vessel caught with incorrect catch reports,0,Broad,,,,0
+Vessel caught underreporting catch in North Atlantic,4,Broad,,* Note: This batch of queries is not representative of a perfect set. The ratio of broad to specific prompt topics is due to randomized prompt generation. ,,4
+Vessel caught misreporting haddock catch,2,Specific,,,,2
+Vessel caught with inaccurate fish size records,0,Broad,,,,0
+Vessel caught underreporting catch near protected area,3,Broad,,,,3
+Vessel caught misreporting tuna catch quantities,2,Specific,,,,2
+Vessel caught with unrecorded fish species,0,Broad,,,,0
+Vessel caught bypassing quota system,0,Broad,,,,0
+Vessel caught with illegal catch documentation,0,Broad,,,,0
+Vessel caught underreporting catch during inspection,3,Broad,,,,3
+Vessel caught using banned fishing gear,0,Broad,,,,0
+Vessel caught with hidden compartments for fish,0,Broad,,,,0
+Vessel caught misreporting catch to evade taxes,2,Broad,,,,2
+Vessel caught underreporting salmon catch,3,Specific,,,,3
+Vessel caught with manipulated scales,1,Broad,,,,1
+Vessel caught misreporting bluefin tuna catch,2,Specific,,,,2
+Vessel caught exceeding catch limits,0,Broad,,,,0
+Vessel caught with unregistered catch,2,Broad,,,,2
+Vessel caught falsifying catch dates,1,Broad,,,,1
+Vessel caught misreporting catch in Mediterranean,2,Broad,,,,2
+Vessel caught with underreported catch volume,4,Broad,,,,4
+Vessel caught falsifying species identification,1,Broad,,,,1
+Vessel caught with incorrect catch weights,0,Broad,,,,0
+Vessel caught misreporting catch for subsidies,2,Broad,,,,2
+Vessel caught underreporting sardine catch,3,Specific,,,,3
+Vessel caught bypassing catch reporting protocol,0,Broad,,,,0
+Vessel caught with falsified catch origins,1,Broad,,,,1
+Vessel caught misreporting catch in exclusive economic zones,4,Broad,,,,4
+Vessel caught hiding catch from authorities,1,Broad,,,,1
+Vessel caught with false catch certificates,0,Broad,,,,0
+Vessel caught underreporting catch in national waters,4,Broad,,,,4
+Vessel caught manipulating catch records,1,Broad,,,,1
+Vessel caught with fake catch tags,0,Broad,,,,0
+Vessel caught misreporting hake catch,2,Specific,,,,2
+Vessel caught evading fishing area regulations,0,Broad,,,,0
+Vessel caught with unreported endangered species,3,Broad,,,,3
+Vessel caught falsifying catch numbers,1,Broad,,,,1
+Vessel caught underreporting catch in territorial waters,4,Broad,,,,4
+Vessel caught with doctored catch documentation,0,Broad,,,,0
+Vessel caught misreporting catch to insurance,2,Broad,,,,2
+Vessel caught with undisclosed catch areas,0,Broad,,,,0
+Vessel caught underreporting catch to fisheries management,4,Broad,,,,4
+Vessel caught falsifying fish weights,1,Broad,,,,1
+Vessel caught misreporting catch in international waters,2,Broad,,,,2
+Vessel caught with unreported catch sales,3,Broad,,,,3
+Vessel caught falsifying catch times,1,Broad,,,,1
+Vessel caught misreporting catch during export,2,Broad,,,,2
+Vessel caught underreporting catch for export quotas,4,Broad,,,,4
+Vessel caught falsifying fish species on reports,1,Broad,,,,1
+Vessel caught with illegal catch handling,0,Broad,,,,0
+Vessel caught misreporting catch to regulatory bodies,2,Broad,,,,2
+Vessel caught underreporting catch for competitive advantage,4,Broad,,,,4
+Vessel caught with contraband fish species,0,Broad,,,,0
+Vessel caught falsifying catch volumes,1,Broad,,,,1
+Vessel caught misreporting catch during seasonal ban,2,Broad,,,,2
+Vessel caught underreporting catch to evade fines,3,Broad,,,,3
+Vessel caught with fake fishing licenses,0,Broad,,,,0
+Vessel caught misreporting catch to international buyers,2,Broad,,,,2
+Vessel caught with undeclared catch operations,0,Broad,,,,0
+Vessel caught falsifying catch locations,1,Broad,,,,1
+Vessel caught underreporting catch to avoid sanctions,3,Broad,,,,3
+Vessel caught with non-compliant catch reporting,0,Broad,,,,0
+Vessel caught misreporting catch to trading partners,2,Broad,,,,2
+Vessel caught underreporting catch in exclusive fishing zones,4,Broad,,,,4
+Vessel caught falsifying daily catch limits,1,Broad,,,,1
+Vessel caught with incorrect catch log entries,0,Broad,,,,0
+Vessel caught misreporting catch to conservation authorities,2,Broad,,,,2
+Vessel caught underreporting catch to avoid quota limits,4,Broad,,,,4
+Vessel caught with non-disclosed catch information,4,Broad,,,,4
+Vessel caught falsifying fishing trip reports,1,Broad,,,,1
+Vessel caught misreporting catch to market regulators,2,Broad,,,,2
+Vessel caught underreporting catch on commercial invoices,2,Broad,,,,2
+Vessel caught with incorrect species reporting,0,Broad,,,,0
+Vessel caught falsifying catch data for research,1,Broad,,,,1
+Vessel caught misreporting catch to environmental agencies,2,Broad,,,,2
+Vessel caught underreporting catch during audits,3,Broad,,,,3
+Vessel caught with false catch declarations,0,Broad,,,,0
+Vessel caught misreporting catch for licensing,2,Broad,,,,2
+Vessel caught underreporting catch for market access,4,Broad,,,,4
+Vessel caught falsifying catch data to NGOs,1,Broad,,,,1
+Vessel caught misreporting cod catch volumes,2,Specific,,,,2
+Vessel caught with hidden fish storage areas,0,Broad,,,,0
+Vessel caught underreporting catch for sustainability,3,Broad,,,,3
+Vessel caught falsifying quota reports,1,Broad,,,,1
+Vessel caught misreporting catch to fishing unions,2,Broad,,,,2
+Vessel caught underreporting shrimp catch,3,Specific,,,,3
+Vessel caught with altered catch records,0,Broad,,,,0
+Vessel caught falsifying fish type for premium prices,1,Broad,,,,1
+Vessel caught misreporting catch to avoid international disputes,2,Broad,,,,2
+Vessel caught underreporting catch in foreign ports,4,Broad,,,,4
+Vessel caught with undisclosed catch numbers,0,Broad,,,,0
+Vessel caught falsifying fishing zone entries,1,Broad,,,,1
+Vessel caught misreporting catch to health inspectors,2,Broad,,,,2
+Vessel caught underreporting catch for insurance claims,3,Broad,,,,3
+Vessel caught with mislabeled fish species,0,Broad,,,,0
+Vessel caught falsifying catch during transport,1,Broad,,,,1
+Vessel caught misreporting catch for fishing competition,2,Broad,,,,2
+Vessel caught misreporting catch for quota manipulation,2,Broad,,,,2
