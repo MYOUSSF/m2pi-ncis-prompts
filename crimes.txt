@@ -1,0 +1,71 @@
+- Illegal Fishing
+    - Unreported Fishing
+    - Misrepresented catch
+    - Logbook Discrepancies: Differences between the actual catch and what is recorded in the vessel's
+    logbook, which is used for regulatory and scientific purposes
+    - False Declarations: Providing incorrect information on catch declarations, which can include quantities, or
+    fishing to mislead authorities.
+    - Landing Fraud: Manipulating or falsifying records at the point of landing to misrepresent the amount or
+    species of fish caught.
+    - Falsified Documentation: Creating or altering documents such as catch certificates, logbooks, and landing
+    declarations to misrepresent catch data.
+    - Dockside Sales: Selling fish directly from the vessel to buyers at the dock without proper reporting or
+    documentation.
+    - Weight Fraud: Misreporting the weight of the catch, either by underreporting to avoid quotas or
+    overreporting to meet minimum landing size requirements fraudulently.
+    - Catch Smuggling: Secretly transporting illegal catches across borders to evade local regulations.
+    - Black Market Fishing: Selling fish caught illegally through unregulated markets without any reporting.
+    - Under-Declaration of Species: Reporting fewer species than actually caught to evade species-specific
+    regulations.
+    - Compliance Evasion: Deliberately avoiding adherence to fishing regulations through misreporting or
+    underreporting.
+    - Fishing Log Tampering: Altering logbook entries after fishing trips to misreport catches.
+    - Harvest Misrepresentation: Providing false information about the amount or type of fish harvested.
+    - Illegal Transshipment: Transferring catches between vessels at sea without proper reporting to evade
+    catch limits.
+    - Underreported Bycatch: Failing to report non-target species that are caught and discarded, often to evade
+    - Unlicensed Fishing: Operating without the necessary licenses or permits and not reporting the catches.
+    - Catch Deception: Intentionally providing misleading information about catches to regulatory authorities.
+    - Quota Evasion: Utilizing various methods to avoid reaching or appearing to exceed quota limits, often
+    involving sophisticated misreporting tactics.
+    - Unreported At-Sea Processing: Processing fish at sea without reporting the activities, often to obscure the
+    quantity or species of the catch.
+    - Catch Inflation: Exaggerating the size or weight of catches in reports to meet minimum size requirements
+    or market demands fraudulently.
+    - Undocumented Landings at Sea: Landing fish onto unregulated or unmonitored vessels at sea to avoid
+    reporting requirements.
+    - Data Falsification: Deliberately entering false data into electronic reporting systems to mislead regulators
+    about catches.
+    - Unreported Recreational Fishing: Failing to report catches from recreational fishing activities that may
+    contribute to total catch limits.
+    - Multiple Logbooks: Maintaining multiple sets of logbooks with different records to deceive inspectors and
+    regulators.
+    - Unreported Land-Based Processing: Processing fish at land-based facilities without reporting the
+    activities to obscure the true quantity or species of the catch.
+    - Quarantine Misreporting: Misreporting catches to avoid quarantine regulations or to expedite market
+    access.
+    - Black Market Sales: Selling fish directly to black market operators without any documentation or reporting
+    to authorities
+    - Catch Sale Off-the-Books: Selling a portion of the catch off-the-books to avoid taxes, quotas, and reporting
+    requirements.
+    - Catch Distribution Misreporting: Misreporting the distribution or allocation of catch among different
+    vessels or regions to evade detection.
+    - Double Bookkeeping: Maintaining two sets of books—one with accurate records for internal use and one
+    falsified for regulatory authorities.
+
+    - Selective Reporting: Only reporting part of the catch while withholding information about the rest, often to
+    comply with perceived limits while hiding excesses.
+    - Transshipment Underreporting: Not fully reporting the amount of fish transferred during transshipment
+    operations to obscure true catch amounts.
+    - Landing Mismatches: Reporting catches at landings that do not match the actual catch in terms of species
+    or weight, often due to transferring catch at sea.
+    - Unreported Incidental Catch: Failing to report incidental or non-target species caught during fishing
+    operations to avoid penalties or bycatch limits.
+    - Catch Transfer Manipulation: Misreporting the amount of catch transferred between different phases of the
+    supply chain (e.g., from vessel to processing plant).
+    - Non-reporting of Invasive Species: Failing to report catches of invasive species to avoid drawing attention
+    to environmental impacts.
+    - Underreporting Juvenile Catches: Not reporting the capture of juvenile fish to evade regulations protecting
+    young fish populations.
+    - Bypass of Catch Verification Systems: Using methods to bypass electronic or manual catch verification
+    systems designed to ensure accurate reporting.'
