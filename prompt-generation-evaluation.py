@@ -1,4 +1,3 @@
-import serpapi.client
 import yake
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -8,6 +7,7 @@ from sklearn.cluster import DBSCAN
 import random
 
 import serpapi
+import serpapi.client
 from ncisKey import ncis_serp_key 
 from bs4 import BeautifulSoup
 from selenium import webdriver
@@ -144,26 +144,28 @@ def get_url_text(url : str,
     return text
 
 def prompt_to_reports(prompt : str,
-                      client : serpapi.client,
+                      client : serpapi.Client,
                       driver : webdriver.Chrome, 
                       num_results : int = inf, 
                       engine : str = 'google_news', 
                       hl : str = 'en', 
                       gl : str = 'us',
                       save : bool = False, 
-                      file : str = 'scraped-results') -> list:
+                      file : str = 'scraped-results') -> dict:
     '''
-    Takes in a prompt and returns a list of strings containing the text of the first n search results.
+    Takes in a prompt and returns a list of dictionaries containing urls and strings containing the text of the first n search results.
 
     prompt : The prompt to be searched.
     client : SerpApi client to be used for retrieving results.
     engine : The search engine to use. Defaults to Google News.
+    driver : Web driver for use in scraping.
+    num_results : Number of results to scrape. Defaults to inf to scrape all returned results.
     hl : Language to use for search. Defaults to English. For supported languages, see https://serpapi.com/google-languages
     gl : Country to use for search. Defaults to US. For countries supported, see https://serpapi.com/google-countries
     save : Boolean determining whether scraped text should be pickled for later use.
     file : Optional argument for naming pickle file with scraped text.
 
-    Returns scraped text from search results as a list of strings.
+    Returns search results as a dictionaries containing links to the top n results and scraped text as strings.
     '''
 
     result_type = {'google' : 'organic_results', 
@@ -175,30 +177,48 @@ def prompt_to_reports(prompt : str,
         hl = hl,
         gl = gl
     )
+    print(prompt)
+    print(result_type[engine])
+    print(list(results_json.keys()))
 
     # print('Search Sucessful')
 
     results = results_json[result_type[engine]]
-    to_scrape = []
+    top_results = {'prompt' : prompt,
+                   'scraped' : 0}
+    
+    scraped = 0
+    iters = 0
 
-    for i in range(min(num_results, len(results))):
-        to_scrape.append(results[i]['link'])
+    while scraped < min(num_results, len(results)):
+        print('Scraped:', scraped)
+        print('Iteration:', iters)
+        link = results[iters]['link']
+        text = get_url_text(link, driver)
 
-    texts = []
+        if text != '':
+            top_results[f'result_{scraped}_link'] = link
+            top_results[f'result_{scraped}_text'] = text
 
-    for url in to_scrape:
-        texts.append(get_url_text(url, driver))
+            scraped += 1
+
+        iters += 1
+
+        if iters >= len(results):
+            break
+
+    top_results['scraped'] = scraped
 
     if save:
         with open(f"{file}", "wb") as pickle_file:
-            pickle.dump(texts, pickle_file)
+            pickle.dump(top_results, pickle_file)
 
-    return texts
+    return top_results
 
 
 
-def get_similarity_score(prompt : str, 
-                         article : str) -> float:
+def get_similarity_score(article : str,
+                         prompt : str = 'vessel caught underreporting misreporting fish catch') -> float:
     '''
     Scores an article based on its similarity to the provided prompt using a transformer model.
 
@@ -259,7 +279,7 @@ def get_score(prompt : str,
 def score_prompt(prompt : str,
                  num_results : int,
                  num_ner : int,
-                 client : serpapi.client,
+                 client : serpapi.Client,
                  driver : webdriver.Chrome) -> float:
     '''
     Scores a prompt by retrieving the top n search results and finding the average relevancy score for each results.
@@ -277,6 +297,7 @@ def score_prompt(prompt : str,
 
     scored  = 0
     iters = 0
+    # print(len(articles))
     while scored < min(num_results, len(articles)):
         article = articles[iters]
         if article != '':
@@ -285,14 +306,17 @@ def score_prompt(prompt : str,
             # print(f'Scored: {scored}')
         
         iters += 1
+        # print(iters)
         # print(f'Iteration {iters}')
-        if iters > num_results + 4:
+        if iters > min(num_results + 4, len(articles)):
             break
     
     return score/num_results
 
 
 def main(n_prompts : int,
+         engine : str,
+         n_results : int = 10,
          file_path : str = 'sample-prompts.csv',
          lan : str = 'en',
          max_ngram : int = 1,
@@ -301,13 +325,13 @@ def main(n_prompts : int,
          eps : float = 0.4,
          min_samples : int = 5,
          metric : str = 'cosine',
-         n_results : int = 10,
          n_entities : int = 10,
          initialize : bool = True) -> pd.DataFrame:
     '''
     Main function for generating prompts, retrieving search engine results, and evaluating prompt performance.
 
     n_prompts : Number of prompts to generate.
+    engine : Search engine to feed prompts to. Currently configured for either Google or Google News.
     file_path : File path for initializing keyword clusters - either sample-prompts.csv or precomuputed clusters file.
     lan : Language for key word extraction. Defaults to English.
     max_ngram : Maximum n-gram length for keyword extraction. Defaults to 1.
@@ -342,12 +366,12 @@ def main(n_prompts : int,
     cluster_dict = {'subject' : [1],
                     'crimes' : [0],
                     'consequences' : [3], 
-                    'specifics' : [0]}
+                    'specifics' :  [0, 2]}
 
     labels_dict = {'subject' : [0],
                     'crimes' : [2, 3, 9],
                     'consequences' : [1], 
-                    'specifics' : [4, 7]}
+                    'specifics' : [7, 4, 8, 6, 1]}
 
     prompt_list = generate_prompts(n_prompts, keyword_clusters, cluster_dict, labels_dict)
     # print(prompt_list)
@@ -362,13 +386,102 @@ def main(n_prompts : int,
 
     pd.DataFrame(prompt_data).to_csv('sample-scored-prompts.csv', index=False)
 
-    # print(pd.DataFrame(prompt_data))
-
     return pd.DataFrame(prompt_data)
+
+def main_verbose(n_prompts : int,
+                  engine : str,
+                  n_results : int = 10,
+                  file_path : str = 'sample-prompts.csv',
+                  sim_weight : float = 0.6, 
+                  ner_weight : float = 0.4,
+                  lan : str = 'en',
+                  max_ngram : int = 1,
+                  dedupLim : float = 0.9,
+                  num_keywords : int = 20,
+                  eps : float = 0.4,
+                  min_samples : int = 5,
+                  metric : str = 'cosine',
+                  n_entities : int = 10,
+                  initialize : bool = True) -> pd.DataFrame:
+    '''
+    Main function for generating prompts with more explcit output.
+
+    n_prompts : Number of prompts to generate.
+    engine : Search engine to feed prompts to. Currently configured for either Google or Google News.
+    file_path : File path for initializing keyword clusters - either sample-prompts.csv or precomuputed clusters file.
+    lan : Language for key word extraction. Defaults to English.
+    max_ngram : Maximum n-gram length for keyword extraction. Defaults to 1.
+    dedeupLim : Deduplication threshold for keyword extraction. Defaults to 0.9
+    eps : Epsilon for use in DBSCAN. Defaults to 0.4.
+    min_samples : Minimum number of neigbours for a core point in DBSCAN. Defaults to 5.
+    metric : Metric for use in DBSCAN. Defaults to 'cosine'.
+    n_results : Number of results to scrape for evaluation. Defaults to 10.
+    n_entities : Number of entities to identify in NER scoring. Defaults to 10.
+    initialize : Indicates whether keyword clusters should be initialized from sample prompts or loaded from file.
+
+    Returns Pandas data frame containing prompts, links to top n scraped reports, similarity and NER score for each report
+    and overall prompt scores.
+    '''
+
+    options = webdriver.ChromeOptions()
+    options.add_argument("headless") 
+    api_key = ncis_serp_key()
+    client = serpapi.Client(api_key=api_key)
+
+    options = webdriver.ChromeOptions()
+    options.add_argument("headless")
+
+    driver = webdriver.Chrome(options=options)
+
+    if initialize:
+        keyword_clusters = initialize_clusters(file_path, lan, max_ngram, dedupLim, num_keywords, eps, min_samples, metric)
         
+    else:
+        print("Add in option to load keywords from file.")
 
-    
+    cluster_dict = {'subject' : [1],
+                    'crimes' : [0],
+                    'consequences' : [3], 
+                    'specifics' :  [0, 2]}
 
-main(100, 'sample-prompts.csv', 'en', 1, 0.9, 20, 0.4, 5, 'cosine', 10, True)
+    labels_dict = {'subject' : [0],
+                    'crimes' : [2, 3, 9],
+                    'consequences' : [1], 
+                    'specifics' : [7, 4, 8, 6, 1]}
+
+    prompt_list = generate_prompts(n_prompts, keyword_clusters, cluster_dict, labels_dict)
+    # print(prompt_list)
+
+    prompt_data = []
+
+    for prompt in prompt_list:
+        prompt_data.append(prompt_to_reports(prompt, client, driver, n_results, engine))
+
+    for prompt_dict in prompt_data:
+        prompt_sim = 0
+        prompt_ner = 0
+        for i in range(prompt_dict['scraped']):
+            sim = get_similarity_score(prompt_dict[f'result_{i}_text'])
+            ner = get_ner_score(prompt_dict[f'result_{i}_text'], n_entities)
+
+            prompt_sim += sim/prompt_dict['scraped']
+            prompt_ner += ner/prompt_dict['scraped']
+
+            prompt_dict[f'result_{i}_sim'] = sim
+            prompt_dict[f'result_{i}_ner'] = ner
+
+        prompt_dict['prompt_sim'] = prompt_sim
+        prompt_dict['prompt_ner'] = prompt_ner
+
+    prompt_df = pd.DataFrame(prompt_data).drop(columns = [f'result_{i}_text' for i in range(n_results)])
+
+    prompt_df['prompt_score'] = sim_weight * prompt_df['prompt_sim'] + ner_weight * prompt_df['prompt_ner']
+
+    prompt_df.to_csv('sample-scored-prompts-verbose.csv')
+
+    return prompt_df
+
+
+main_verbose(10, 'google_news', 5)
 
 
