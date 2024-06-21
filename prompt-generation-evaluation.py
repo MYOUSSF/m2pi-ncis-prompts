@@ -286,7 +286,7 @@ def score_prompt(prompt : str,
         
         iters += 1
         # print(f'Iteration {iters}')
-        if iters > num_results + 5:
+        if iters > num_results + 4:
             break
     
     return score/num_results
