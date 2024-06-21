@@ -177,9 +177,9 @@ def prompt_to_reports(prompt : str,
         hl = hl,
         gl = gl
     )
-    print(prompt)
-    print(result_type[engine])
-    print(list(results_json.keys()))
+    # print(prompt)
+    # print(result_type[engine])
+    # print(list(results_json.keys()))
 
     # print('Search Sucessful')
 
@@ -191,8 +191,8 @@ def prompt_to_reports(prompt : str,
     iters = 0
 
     while scraped < min(num_results, len(results)):
-        print('Scraped:', scraped)
-        print('Iteration:', iters)
+        # print('Scraped:', scraped)
+        # print('Iteration:', iters)
         link = results[iters]['link']
         text = get_url_text(link, driver)
 
@@ -482,6 +482,6 @@ def main_verbose(n_prompts : int,
     return prompt_df
 
 
-main_verbose(10, 'google_news', 5)
+main_verbose(50, 'google_news', 5)
 
 
